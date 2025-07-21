@@ -1,5 +1,6 @@
 {
     "name": "daff/app",
+    "version": "1.0.0",
     "autoload": {
         "psr-4": {
             "Daff\\App\\": "src/",
@@ -18,7 +19,7 @@
     },
     "authors": [
         {
-            "name": "thierno"
+            "name": "Dieng"
         }
     ],
     "require": {

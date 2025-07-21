@@ -2,7 +2,18 @@
     "name": "daff/app",
     "autoload": {
         "psr-4": {
-            "Daff\\App\\": "src/"
+            "Daff\\App\\": "src/",
+            "Src\\Entity\\":"src/entity/",
+            "Src\\Controller\\":"src/Controller/",
+            "Src\\Service\\":"src/service/",
+            "Src\\Repository\\":"src/repository/",
+            "App\\Config\\":"app/config/",
+            "App\\Core\\":"app/core/",
+            "App\\Core\\Abstract\\":"app/core/asbtract/",
+            "App\\Core\\Middlewares\\":"app/core/middlewares",
+            "Migration\\Migration\\":"migrations/",
+            "Seeders\\Seeders\\":"seeders/"
+            
         }
     },
     "authors": [

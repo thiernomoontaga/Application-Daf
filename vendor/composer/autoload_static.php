@@ -20,10 +20,19 @@ class ComposerStaticInitd17f7851e97fe0b4ff2df9031bb87f08
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
+            'Src\\Service\\' => 12,
+            'Src\\Repository\\' => 15,
+            'Src\\Entity\\' => 11,
+            'Src\\Controller\\' => 15,
+            'Seeders\\Seeders\\' => 16,
         ),
         'P' => 
         array (
             'PhpOption\\' => 10,
+        ),
+        'M' => 
+        array (
+            'Migration\\Migration\\' => 20,
         ),
         'G' => 
         array (
@@ -33,6 +42,13 @@ class ComposerStaticInitd17f7851e97fe0b4ff2df9031bb87f08
         array (
             'Dotenv\\' => 7,
             'Daff\\App\\' => 9,
+        ),
+        'A' => 
+        array (
+            'App\\Core\\Middlewares\\' => 21,
+            'App\\Core\\Abstract\\' => 18,
+            'App\\Core\\' => 9,
+            'App\\Config\\' => 11,
         ),
     );
 
@@ -53,9 +69,33 @@ class ComposerStaticInitd17f7851e97fe0b4ff2df9031bb87f08
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Src\\Service\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/service',
+        ),
+        'Src\\Repository\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/repository',
+        ),
+        'Src\\Entity\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/entity',
+        ),
+        'Src\\Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Controller',
+        ),
+        'Seeders\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/seeders',
+        ),
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'Migration\\Migration\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/migrations',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (
@@ -68,6 +108,22 @@ class ComposerStaticInitd17f7851e97fe0b4ff2df9031bb87f08
         'Daff\\App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'App\\Core\\Middlewares\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/core/middlewares',
+        ),
+        'App\\Core\\Abstract\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/core/asbtract',
+        ),
+        'App\\Core\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/core',
+        ),
+        'App\\Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/config',
         ),
     );
 

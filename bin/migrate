@@ -17,6 +17,6 @@ elseif(DB_DRIVER === 'pgsql')
 $pdo= new PDO(BASE_DSN_MYSQl, DB_USER_MYSQL, DB_PASS_MYSQL);
 
 }
-
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $migration=new Migration();
 $migration->run();

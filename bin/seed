@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../app/config/env.php";
+use \PDO;
+
+
+
+if(DB_DRIVER === 'mysql'){
+
+$pdo= new PDO(BASE_DSN_POSTGRES, DB_USER_POSTGRES, DB_PASS_POSTGRES);
+}
+elseif(DB_DRIVER === 'pgsql')
+{
+$pdo= new PDO(BASE_DSN_MYSQl, DB_USER_MYSQL, DB_PASS_MYSQL);
+
+}
+
+$seeder=new Seeder();
+$seeder->run();

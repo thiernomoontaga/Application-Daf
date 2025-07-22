@@ -4,7 +4,7 @@
         "psr-4": {
             "Daff\\App\\": "src/",
             "Src\\Entity\\":"src/entity/",
-            "Src\\Controller\\":"src/Controller/",
+            "Src\\Controller\\":"src/controller/",
             "Src\\Service\\":"src/service/",
             "Src\\Repository\\":"src/repository/",
             "App\\Config\\":"app/config/",

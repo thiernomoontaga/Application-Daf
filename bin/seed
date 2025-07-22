@@ -18,5 +18,5 @@ $pdo= new PDO(BASE_DSN_MYSQl, DB_USER_MYSQL, DB_PASS_MYSQL);
 
 }
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$seeder=new Seeder();
+$seeder=new Seeder($pdo);
 $seeder->run();

@@ -83,7 +83,7 @@ class ComposerStaticInitd17f7851e97fe0b4ff2df9031bb87f08
         ),
         'Src\\Controller\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Controller',
+            0 => __DIR__ . '/../..' . '/src/controller',
         ),
         'Seeders\\Seeders\\' => 
         array (

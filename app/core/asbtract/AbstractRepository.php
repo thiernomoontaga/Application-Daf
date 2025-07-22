@@ -16,3 +16,4 @@ abstract class AbstractRepository
     abstract public function delete();
 
 }
+

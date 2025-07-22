@@ -6,7 +6,7 @@ $dotenv = Dotenv::createUnsafeImmutable(dirname(__DIR__,2));
 $dotenv->load();
 
 
-define('BASE_DSN_POSTGRES', $_ENV['BASE_DSN_POSTGRES']);
+define('DB_DSN_POSTGRES', $_ENV['DB_DSN_POSTGRES']);
 define('DB_USER_POSTGRES', $_ENV['DB_USER_POSTGRES']);
 define('DB_PASS_POSTGRES', $_ENV['DB_PASS_POSTGRES']);
 

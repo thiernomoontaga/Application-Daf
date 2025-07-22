@@ -9,5 +9,5 @@ enum Statut : string {
      CASE ECHEC = 'Echec' ;
 }
 
-echo Statut::SUCCES->value;
-echo  Statut::ECHEC->value;
+ Statut::SUCCES->value;
+ Statut::ECHEC->value;

@@ -44,4 +44,3 @@ class CitoyenRepository implements ICitoyenRepository
     }
 
     }
-}

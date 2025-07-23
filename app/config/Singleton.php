@@ -14,3 +14,4 @@ class Singleton{
     return self::$instance;
   }
 }
+

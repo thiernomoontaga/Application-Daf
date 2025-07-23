@@ -1,5 +1,5 @@
 <?php
-namespace Seeders\Seeders;
+namespace Seeder\Seeder;
 
 
 use PDO;
@@ -20,9 +20,9 @@ class Seeder
          try {
             
         $this->seedDatabase();
-         echo ( "insertion faite avec  succes thierno boullette  bou ramma ");
+         echo ( "insertion faite avec  succes ");
     } catch ( PDOException $e) {
-             die("echec insertion des donnes  thierno boullette ".$e->getMessage());
+             die("echec insertion des donnes   ".$e->getMessage());
          }
      }
     public  function seedDatabase()
@@ -30,7 +30,7 @@ class Seeder
         $sql=match ($this->driver) {
             "mysql" => file_get_contents(__DIR__.'/../databases/insert_mysql.sql') ,
             "pgsql" => file_get_contents(__DIR__.'/../databases/insert_pgsql.sql') ,
-            default => throw new Exception("le driver est pas pas  thierno bouellete"),
+            default => throw new Exception("le driver  n' existe pas  "),
  
         };
          return $this->pdo->exec($sql);

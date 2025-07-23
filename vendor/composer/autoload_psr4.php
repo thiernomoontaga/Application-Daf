@@ -14,7 +14,7 @@ return array(
     'Src\\Repository\\' => array($baseDir . '/src/repository'),
     'Src\\Entity\\' => array($baseDir . '/src/entity'),
     'Src\\Controller\\' => array($baseDir . '/src/controller'),
-    'Seeders\\Seeders\\' => array($baseDir . '/seeders'),
+    'Seeder\\Seeder\\' => array($baseDir . '/seeders'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'Migration\\Migration\\' => array($baseDir . '/migrations'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),

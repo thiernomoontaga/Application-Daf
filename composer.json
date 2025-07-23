@@ -13,10 +13,18 @@
             "App\\Core\\Abstract\\":"app/core/asbtract/",
             "App\\Core\\Middlewares\\":"app/core/middlewares",
             "Migration\\Migration\\":"migrations/",
-            "Seeders\\Seeders\\":"seeders/"
+            "Seeder\\Seeder\\":"seeders/"
             
         }
     },
+    "scripts":{
+        "database:migrate":"@php bin/migrate",
+        "database:seed":"@php bin/seed"
+    },
+    "bin":[
+        "bin/migrate",
+        "bin/seed"
+    ],
     "authors": [
         {
             "name": "Dieng"

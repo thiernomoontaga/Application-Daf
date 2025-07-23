@@ -4,20 +4,18 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 require_once __DIR__ . "/../app/config/env.php";
+use PDO;
 
-use Migrations\Migrations\Migration;
-use \PDO;
+use Migration\Migration\Migration;
 
+if (DB_DRIVER === 'mysql'){
 
-
-if(DB_DRIVER === 'mysql'){
-
-$pdo= new PDO(DB_DSN_POSTGRES, DB_USER_POSTGRES, DB_PASS_POSTGRES);
+$pdo= new PDO( BASE_DSN_MYSQL, DB_USER_MYSQL,DB_PASS_MYSQL);
 }
-elseif(DB_DRIVER === 'pgsql')
+elseif (DB_DRIVER === 'pgsql')
 {
-$pdo= new PDO(BASE_DSN_MYSQl, DB_USER_MYSQL, DB_PASS_MYSQL);
-
+    $pdo= new PDO( BASE_DSN_POSTGRES, DB_USER_POSTGRES, DB_PASS_POSTGRES);
+ 
 }
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $migration=new Migration($pdo);

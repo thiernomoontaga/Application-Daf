@@ -2,7 +2,11 @@
 
 abstract class AbtractEntity{
 
-    abstract  public function toObject(array $data):array;
-    abstract public function toArray(object $data):ob;
-    public function toJson(){}
+    // abstract  public function toObject(array $data);
+    abstract public function toArray();
+    public function toJson(){
+        return json_encode($this->toArray());  
+    }
+
+    
 }

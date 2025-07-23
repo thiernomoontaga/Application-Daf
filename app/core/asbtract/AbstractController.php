@@ -1,22 +1,14 @@
 <?php
 
-abstract class AbstractController{
+namespace App\Core;
 
-
-
-    public function __construct()
+abstract class AbstractController
+{
+    protected function renderJSON(array $data, int $code = 200): void
     {
-
+        http_response_code($code);
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
     }
-
-    abstract  public function index();
-    abstract public function store();
-    abstract public function edit();
-    abstract public function create();
-
-
-      public function renderJSON():void{
-
-      }
-
 }

@@ -1,0 +1,37 @@
+### Dépendances et vendor
+/vendor/
+
+### Docker
+/docker/
+docker-compose.yml
+
+### Environnements et config locales
+.env
+.env.local
+.env.*.local
+
+### Logs et fichiers temporaires
+*.log
+/log/
+
+### Cache et sessions
+/cache/
+
+### IDE et OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+### Autres fichiers à ignorer
+/node_modules/
+
+
+### Fichiers de build
+/build/
+
+
+### Fichiers de test
+/tests/

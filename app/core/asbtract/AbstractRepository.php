@@ -3,10 +3,11 @@
 abstract class AbstractRepository
 {
     protected PDO $pdo;
+    protected $table;
 
     protected function __construct()
     {
-
+        $this->pdo = App::getDependency('Database');
     }
 
 

@@ -115,7 +115,7 @@ class ComposerStaticInitd17f7851e97fe0b4ff2df9031bb87f08
         ),
         'App\\Core\\Abstract\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app/core/asbtract',
+            0 => __DIR__ . '/../..' . '/app/core/abstract',
         ),
         'App\\Core\\' => 
         array (

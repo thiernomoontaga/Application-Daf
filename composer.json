@@ -10,7 +10,7 @@
             "Src\\Repository\\":"src/repository/",
             "App\\Config\\":"app/config/",
             "App\\Core\\":"app/core/",
-            "App\\Core\\Abstract\\":"app/core/asbtract/",
+            "App\\Core\\Abstract\\":"app/core/abstract/",
             "App\\Core\\Middlewares\\":"app/core/middlewares",
             "Migration\\Migration\\":"migrations/",
             "Seeders\\Seeders\\":"seeders/"

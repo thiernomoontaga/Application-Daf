@@ -21,7 +21,7 @@ return array(
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Daff\\App\\' => array($baseDir . '/src'),
     'App\\Core\\Middlewares\\' => array($baseDir . '/app/core/middlewares'),
-    'App\\Core\\Abstract\\' => array($baseDir . '/app/core/asbtract'),
+    'App\\Core\\Abstract\\' => array($baseDir . '/app/core/abstract'),
     'App\\Core\\' => array($baseDir . '/app/core'),
     'App\\Config\\' => array($baseDir . '/app/config'),
 );

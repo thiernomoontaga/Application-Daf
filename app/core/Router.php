@@ -8,17 +8,22 @@ class Router
     {
         $routes = require __DIR__ . '/../../routes/route.json.php'; // chemin vers routes
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri = rtrim($uri, '/');
         $method = $_SERVER['REQUEST_METHOD'];
 
         foreach ($routes as $path => $route) {
             $pattern = preg_replace('#\{[^/]+\}#', '([^/]+)', $path);
+            // var_dump($pattern); // Debugging line
+            // die();
             $pattern = '#^' . $pattern . '$#';
-
+            // var_dump($pattern); // Debugging line
+            // die();
+            
             if (preg_match($pattern, $uri, $matches) && in_array($method, $route['methods'])) {
 
                 array_shift($matches);
-                var_dump($matches); // Debugging line
-                die();
+                // var_dump($matches); // Debugging line
+                // die();
                 $controller = $route['controller'];
                 $action = $route['action'];
 
@@ -42,7 +47,7 @@ class Router
             'data' => null,
             'statut' => 'error',
             'code' => 404,
-            'message' => 'Route non trouvée'
+            'message' => 'Ressource introuvable'
         ], 404);
     }
 

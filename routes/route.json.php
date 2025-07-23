@@ -16,6 +16,7 @@ $routes = [
         'action' => 'index',
         'methods' => ['GET']
     ],
+    // Route utilisee par ma
     '/api/v1/citoyens/{nci}' => [
         'controller' => CitoyenController::class,
         'action' => 'show',

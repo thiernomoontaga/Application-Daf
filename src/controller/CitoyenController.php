@@ -19,8 +19,8 @@ class CitoyenController
         $location = 'inconnue';
         $now = date('Y-m-d H:i:s');
 
-        var_dump($ip, $now, $cni, $location); // Debugging line
-        die();
+        // var_dump($ip, $now, $cni, $location); // Debugging line
+        // die();
 
         $citoyen = $cni; // $citoyenService->getCitoyenByNci($nci);
 

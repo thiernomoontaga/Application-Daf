@@ -7,7 +7,23 @@ abstract class AbstractController
   protected function renderJson(array $data, int $status = 200): void
   {
     http_response_code($status);
+
+    // Headers CORS
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS, PATCH');
+    header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept, Origin, X-Api-Key');
+    header('Access-Control-Expose-Headers: X-Total-Count');
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Max-Age: 86400');
+
+    // Content-Type JSON
     header('Content-Type: application/json');
+
+    // Gérer les requêtes OPTIONS (preflight)
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+      exit;
+    }
+
     echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     exit;
   }

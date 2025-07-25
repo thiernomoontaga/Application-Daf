@@ -23,11 +23,11 @@ class Seeder
     {
         try {
             $this->seedCitoyens();
-            echo "🎉 Insertion des données terminée avec succès!\n";
+            echo "Insertion des données terminée avec succès!\n";
         } catch (PDOException $e) {
-            die("❌ Échec de l'insertion des données: " . $e->getMessage() . "\n");
+            die("Échec de l'insertion des données: " . $e->getMessage() . "\n");
         } catch (Exception $e) {
-            die("❌ Erreur: " . $e->getMessage() . "\n");
+            die("Erreur: " . $e->getMessage() . "\n");
         }
     }
 
@@ -73,44 +73,44 @@ class Seeder
         echo "\n2️⃣ Création des citoyens...\n";
         $citoyens = [
             [
-                'prenom' => 'Jean',
-                'nom' => 'Dupont',
-                'cni' => '19901150001',
+                'prenom' => 'Amina',
+                'nom' => 'Sow',
+                'cni' => '1990115000123',
                 'date_naissance' => '1990-01-15',
                 'lieu_naissance' => 'Dakar',
                 'copie_cni' => $uploadedImages[0] ?? null
             ],
             [
                 'prenom' => 'Marie',
-                'nom' => 'Martin',
-                'cni' => '19850722002',
+                'nom' => 'Diop',
+                'cni' => '1985072200123',
                 'date_naissance' => '1985-07-22',
                 'lieu_naissance' => 'Thiès',
                 'copie_cni' => $uploadedImages[1] ?? null
             ],
             [
-                'prenom' => 'Pierre',
-                'nom' => 'Durand',
-                'cni' => '19920310003',
+                'prenom' => 'John',
+                'nom' => 'Doe',
+                'cni' => '1992031000302',
                 'date_naissance' => '1992-03-10',
                 'lieu_naissance' => 'Saint-Louis',
                 'copie_cni' => $uploadedImages[2] ?? null
             ],
             [
-                'prenom' => 'Sophie',
-                'nom' => 'Leroy',
-                'cni' => '19880518004',
+                'prenom' => 'Jane',
+                'nom' => 'Doe',
+                'cni' => '1988051800412',
                 'date_naissance' => '1988-05-18',
                 'lieu_naissance' => 'Kaolack',
-                'copie_cni' => null
+                'copie_cni' => $uploadedImages[0] ?? null
             ],
             [
-                'prenom' => 'Ahmed',
-                'nom' => 'Benali',
-                'cni' => '19931203005',
+                'prenom' => 'Jin',
+                'nom' => 'Doe',
+                'cni' => '1993120300512',
                 'date_naissance' => '1993-12-03',
                 'lieu_naissance' => 'Ziguinchor',
-                'copie_cni' => null
+                'copie_cni' => $uploadedImages[1] ?? null
             ]
         ];
 

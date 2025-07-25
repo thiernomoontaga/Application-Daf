@@ -3,6 +3,13 @@
 // Configuration des routes pour l'API
 $routes = [
     [
+        'path' => '/',
+        'controller' => 'Src\\Controller\\HomeController',
+        'action' => 'index',
+        'methods' => ['GET'],
+        'middlewares' => []
+    ],
+    [
         'path' => '/api/v1',
         'controller' => 'Src\\Controller\\HomeController',
         'action' => 'index',

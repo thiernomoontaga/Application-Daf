@@ -6,5 +6,5 @@ use Src\Entity\Citoyen;
 interface IcitoyenService
 {
     public function rechercherCitoyen(string $cni): ?Citoyen;
-    public function ajouterCitoyen(array $data): bool;
+    // public function ajouterCitoyen(array $data): bool;
 }

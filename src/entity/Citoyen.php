@@ -23,7 +23,17 @@ class Citoyen{
     $this->dateNaissance = $dateNaissance;
     $this->copieCin = $copieCin;
   }
-
+   public static function toObject(array $data): self
+    {
+        $citoyen = new self();
+        $citoyen->setId($data['id'] ?? 0);
+        $citoyen->setNom($data['nom'] ?? '');
+        $citoyen->setPrenom($data['prenom'] ?? '');
+        $citoyen->setDateNaissance(isset($data['date_naissance']) ? new DateTime($data['date_naissance']) : null);
+        $citoyen->setLieuNaissance($data['lieu_naissance'] ?? '');
+        $citoyen->setCopieCin($data['copie_cin'] ?? '');
+        return $citoyen;
+    }
 
                 public function getId(): int
                 {

@@ -1,33 +1,26 @@
 <?php
+
 namespace Src\Service;
 
 use Src\Entity\Citoyen;
 use Src\Repository\ICitoyenRepository;
 
-class CitoyenService implements IcitoyenService
+class CitoyenService implements ICitoyenService
 {
-    private ICitoyenRepository $repository;
+    private ICitoyenRepository $citoyenRepository;
 
-    public function __construct(ICitoyenRepository $repository)
+    public function __construct(ICitoyenRepository $citoyenRepository)
     {
-        $this->repository = $repository;
+        $this->citoyenRepository = $citoyenRepository;
     }
 
-    public function rechercherCitoyen(string $cni): ?Citoyen
+    public function getCitoyenByCni(string $cni): ?Citoyen
     {
-        return $this->repository->findByCni($cni);
+        return $this->citoyenRepository->findByCni($cni);
     }
 
-    // public function ajouterCitoyen(array $data): bool
-    // {
-    //     $citoyen = new Citoyen(
-    //         $data['cni'],
-    //         $data['nom'],
-    //         $data['prenom'],
-    //         $data['date_naissance'],
-    //         $data['lieu_naissance'],
-    //         $data['copie_cni'] ?? null
-    //     );
-    //     return $this->repository->save($citoyen);
-    // }
+    public function getAllCitoyens(array $filters): array
+    {
+        return $this->citoyenRepository->findAll($filters);
+    }
 }

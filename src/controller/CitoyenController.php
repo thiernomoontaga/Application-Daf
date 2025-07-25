@@ -2,77 +2,101 @@
 
 namespace Src\Controller;
 
-use DateTimeZone;
+require_once __DIR__ . '/../../app/core/asbtract/AbstractController.php';
 
-class CitoyenController
+use AbstractController;
+use Src\Service\ICitoyenService;
+use Src\Service\ILoggingService;
+use Src\Entity\Citoyen;
+use Exception;
+
+class CitoyenController extends AbstractController
 {
+    private ICitoyenService $citoyenService;
+    private ILoggingService $loggingService;
+
+    public function __construct(ICitoyenService $citoyenService, ILoggingService $loggingService)
+    {
+        parent::__construct();
+        $this->citoyenService = $citoyenService;
+        $this->loggingService = $loggingService;
+    }
 
     public function index()
     {
-        // Logique pour récupérer la liste des citoyens
-        echo json_encode(['message' => 'Liste des citoyens']);
+        try {
+            $citoyens = $this->citoyenService->getAllCitoyens(['limit' => 10, 'offset' => 0]);
+            if (empty($citoyens)) {
+                $this->renderJson([
+                    'data' => null,
+                    'statut' => 'error',
+                    'code' => 404,
+                    'message' => "Aucun citoyen trouvé"
+                ], 404);
+                return;
+            }
+            $this->renderJson([
+                'data' => $citoyens,
+                'statut' => 'success',
+                'code' => 200,
+                'message' => "Liste des citoyens récupérée avec succès"
+            ]);
+        } catch (Exception $e) {
+            $this->renderJson([
+                'data' => null,
+                'statut' => 'error',
+                'code' => 500,
+                'message' => "Erreur serveur: " . $e->getMessage()
+            ], 500);
+        }
     }
-
     public function show($cni)
     {
-    	$ip = $_SERVER['REMOTE_ADDR'] ?? 'inconnue';
+        $ip = $this->getClientIp();
         $location = 'inconnue';
         $now = date('Y-m-d H:i:s');
 
-        var_dump($ip, $now, $cni, $location); // Debugging line
-        die();
-
-        $citoyen = $cni; // $citoyenService->getCitoyenByNci($nci);
-
-        if ($citoyen) {
-            // LoggingService::logRecherche($nci, $now, $ip, $location, 'success');
-            return $this->renderJson([
-                'data' => $citoyen,
-                'statut' => 'success',
-                'code' => 200,
-                'message' => "Le numéro de carte d'identité a été retrouvé"
-            ]);
-        } else {
-            // LoggingService::logRecherche($nci, $now, $ip, $location, 'error');
+        $citoyen = $this->citoyenService->getCitoyenByCni($cni);
+        if (!$citoyen) {
+            $this->loggingService->log($cni, $now, $ip, $location, 'error');
             return $this->renderJson([
                 'data' => null,
                 'statut' => 'error',
                 'code' => 404,
-                'message' => "Le numéro de carte d'identité non retrouvé"
-            ]);
+                'message' => "numéro de carte d'identité non retrouvé: $cni"
+            ], 404);
         }
-        echo json_encode(['message' => "Détails du citoyen avec CNI: $cni"]);
+
+        $this->loggingService->log($cni, $now, $ip, $location, 'success');
+        return $this->renderJson([
+            'data' => Citoyen::toArray($citoyen),
+            'statut' => 'success',
+            'code' => 200,
+            'message' => "Le numéro de carte d'identité a été retrouvé"
+        ]);
     }
 
     public function create()
     {
         // Logique pour créer un nouveau citoyen
-        echo json_encode(['message' => 'Citoyen créé']);
+        $this->renderJson(['message' => 'Citoyen créé']);
     }
 
     public function update($cni)
     {
         // Logique pour mettre à jour un citoyen par son CNI
-        echo json_encode(['message' => "Citoyen avec CNI: $cni mis à jour"]);
+        $this->renderJson(['message' => "Citoyen avec CNI: $cni mis à jour"]);
     }
 
     public function delete($cni)
     {
         // Logique pour supprimer un citoyen par son CNI
-        echo json_encode(['message' => "Citoyen avec CNI: $cni supprimé"]);
+        $this->renderJson(['message' => "Citoyen avec CNI: $cni supprimé"]);
     }
 
     public function search()
     {
         // Logique pour rechercher des citoyens
-        echo json_encode(['message' => 'Recherche de citoyens']);
-    }
-
-    private function renderJson(array $data, int $status = 200)
-    {
-        http_response_code($status);
-        header('Content-Type: application/json');
-        echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        exit;
+        $this->renderJson(['message' => 'Recherche de citoyens']);
     }
 }

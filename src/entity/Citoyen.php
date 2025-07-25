@@ -1,93 +1,139 @@
 <?php
 
- namespace Src\Entity;
+namespace Src\Entity;
 
 use DateTime;
 
-class Citoyen{
-     
+class Citoyen
+{
+
     private int $id;
-    private String $nom;
-    private String $prenom;
+    private string $cni;
+    private string $nom;
+    private string $prenom;
     private ?DateTime $dateNaissance;
-    private String $lieuNaissance;
-    private String $copieCin;
+    private string $lieuNaissance;
+    private ?string $copieCni;
+
+    public function __construct(
+        int $id = 0,
+        string $cni = '',
+        string $nom = '',
+        string $prenom = '',
+        ?DateTime $dateNaissance = null,
+        string $lieuNaissance = '',
+        ?string $copieCni = null
+    ) {
+        $this->id = $id;
+        $this->cni = $cni;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->dateNaissance = $dateNaissance;
+        $this->lieuNaissance = $lieuNaissance;
+        $this->copieCni = $copieCni;
+    }
+
+    public static function toObject(array $data): self
+    {
+        return new self(
+            $data['id'] ?? 0,
+            $data['cni'] ?? '',
+            $data['nom'] ?? '',
+            $data['prenom'] ?? '',
+            isset($data['date_naissance']) ? new DateTime($data['date_naissance']) : null,
+            $data['lieu_naissance'] ?? '',
+            $data['copie_cni'] ?? null
+        );
+    }
+
+    public static function toArray(self $citoyen): array
+    {
+        return [
+            'id' => $citoyen->getId(),
+            'cni' => $citoyen->getCni(),
+            'nom' => $citoyen->getNom(),
+            'prenom' => $citoyen->getPrenom(),
+            'date_naissance' => $citoyen->getDateNaissance() ? $citoyen->getDateNaissance()->format('Y-m-d') : null,
+            'lieu_naissance' => $citoyen->getLieuNaissance(),
+            'copie_cni' => $citoyen->getCopieCni()
+        ];
+    }
 
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    public function getCni(): string
+    {
+        return $this->cni;
+    }
 
-    public function __construct( int $id = 0, string $nom='', string $prenom='', ?DateTime $dateNaissance=null,  string $lieuNaissance='' , string $copieCin=''){
-    $this->id = $id;
-    $this->nom = $nom;
-    $this->prenom = $prenom;
-    $this->dateNaissance = $dateNaissance;
-    $this->copieCin = $copieCin;
-  }
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
 
+    public function getPrenom(): string
+    {
+        return $this->prenom;
+    }
 
-                public function getId(): int
-                {
-                    return $this->id;
-                }
+    public function getDateNaissance(): ?DateTime
+    {
+        return $this->dateNaissance;
+    }
 
-                public function getNom(): string
-                {
-                    return $this->nom;
-                }
+    public function getLieuNaissance(): string
+    {
+        return $this->lieuNaissance;
+    }
 
-                public function getPrenom(): string
-                {
-                    return $this->prenom;
-                }
+    public function getCopieCni(): ?string
+    {
+        return $this->copieCni;
+    }
 
-                public function getDateNaissance(): ?DateTime
-                {
-                    return $this->dateNaissance;
-                }
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
 
-                public function getLieuNaissance(): string
-                {
-                    return $this->lieuNaissance;
-                }
+    public function setCni(string $cni): self
+    {
+        $this->cni = $cni;
+        return $this;
+    }
 
-                public function getCopieCin(): string
-                {
-                    return $this->copieCin;
-                }
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+        return $this;
+    }
 
-                public function setId(int $id): self
-                {
-                    $this->id = $id;
-                    return $this;
-                }
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
 
-                public function setNom(string $nom): self
-                {
-                    $this->nom = $nom;
-                    return $this;
-                }
+    public function setDateNaissance(?DateTime $dateNaissance): self
+    {
+        $this->dateNaissance = $dateNaissance;
+        return $this;
+    }
 
-                public function setPrenom(string $prenom): self
-                {
-                    $this->prenom = $prenom;
-                    return $this;
-                }
+    public function setLieuNaissance(string $lieuNaissance): self
+    {
+        $this->lieuNaissance = $lieuNaissance;
+        return $this;
+    }
 
-                public function setDateNaissance(?DateTime $dateNaissance): self
-                {
-                    $this->dateNaissance = $dateNaissance;
-                    return $this;
-                }
-
-                public function setLieuNaissance(string $lieuNaissance): self
-                {
-                    $this->lieuNaissance = $lieuNaissance;
-                    return $this;
-                }
-
-                public function setCopieCin(string $copieCin): self
-                {
-                    $this->copieCin = $copieCin;
-                    return $this;
-                }
-                }
+    public function setCopieCni(?string $copieCni): self
+    {
+        $this->copieCni = $copieCni;
+        return $this;
+    }
+}

@@ -1,53 +1,64 @@
 <?php
 
 // Configuration des routes pour l'API
-
-use Src\Controller\CitoyenController;
-use Src\Controller\HomeController;
-
 $routes = [
-    '/api/v1' => [
-        'controller' => HomeController::class,
+    [
+        'path' => '/api/v1',
+        'controller' => 'Src\\Controller\\HomeController',
         'action' => 'index',
-        'methods' => ['GET']
+        'methods' => ['GET'],
+        'middlewares' => []
     ],
-    '/api/v1/citoyens' => [
-        'controller' => CitoyenController::class,
+    [
+        'path' => '/api/v1/citoyens',
+        'controller' => 'Src\\Controller\\CitoyenController',
         'action' => 'index',
-        'methods' => ['GET']
+        'methods' => ['GET'],
+        'middlewares' => []
     ],
-    '/api/v1/citoyens/{nci}' => [
-        'controller' => CitoyenController::class,
-        'action' => 'show',
-        'methods' => ['GET']
-    ],
-    '/api/v1/citoyens/create' => [
-        'controller' => CitoyenController::class,
+    [
+        'path' => '/api/v1/citoyens',
+        'controller' => 'Src\\Controller\\CitoyenController',
         'action' => 'create',
-        'methods' => ['POST']
+        'methods' => ['POST'],
+        'middlewares' => []
     ],
-    '/api/v1/citoyens/search' => [
-        'controller' => CitoyenController::class,
+    [
+        'path' => '/api/v1/citoyens/search',
+        'controller' => 'Src\\Controller\\CitoyenController',
         'action' => 'search',
-        'methods' => ['GET']
+        'methods' => ['GET'],
+        'middlewares' => []
     ],
-    
+    [
+        'path' => '/api/v1/citoyens/{cni}',
+        'controller' => 'Src\\Controller\\CitoyenController',
+        'action' => 'show',
+        'methods' => ['GET'],
+        'middlewares' => []
+    ],
+    [
+        'path' => '/api/v1/citoyens/{cni}',
+        'controller' => 'Src\\Controller\\CitoyenController',
+        'action' => 'update',
+        'methods' => ['PUT', 'PATCH'],
+        'middlewares' => []
+    ],
+    [
+        'path' => '/api/v1/citoyens/{cni}',
+        'controller' => 'Src\\Controller\\CitoyenController',
+        'action' => 'delete',
+        'methods' => ['DELETE'],
+        'middlewares' => []
+    ]
 ];
 
-return $routes;
-
-
-// return $routes = [
-//     [
-//         'path' => '/api/v1',
-//         'controller' => HomeController::class,
-//         'action' => 'index',
-//         'methods' => ['GET']
-//     ],
-//     [
-//         'path' => '/api/v1/citoyens',
-//         'controller' => CitoyenController::class,
-//         'action' => 'index',
+// Configuration des middlewares
+$middlewares = [
+    // Ajoutez ici vos middlewares si nécessaire
+    // 'auth' => 'App\\Middleware\\AuthMiddleware',
+    // 'cors' => 'App\\Middleware\\CorsMiddleware',
+];
 //         'methods' => ['GET']
 //     ],
 //     [

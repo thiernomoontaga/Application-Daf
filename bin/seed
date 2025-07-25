@@ -1,21 +1,25 @@
 #!/usr/bin/env php
-
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
-require_once __DIR__ . "/../app/config/env.php";
-use \PDO;
-use Seeders\Seeders\Seeder;
+require_once __DIR__ . '/../vendor/autoload.php';
 
-if(DB_DRIVER === 'mysql'){
+// Charger le bootstrap pour initialiser l'application
+require_once __DIR__ . '/../app/config/bootstrap.php';
 
-$pdo= new PDO(DB_DSN_POSTGRES, DB_USER_POSTGRES, DB_PASS_POSTGRES);
+use Seeders\Seeder;
+use App\Core\App;
+
+try {
+    echo "🌱 Démarrage du seeder...\n\n";
+
+    // Initialiser le conteneur DI
+    App::init();
+
+    $seeder = new Seeder();
+    $seeder->run();
+
+    echo "\n✅ Seeder terminé avec succès!\n";
+} catch (Exception $e) {
+    echo "\n❌ Erreur lors du seeding: " . $e->getMessage() . "\n";
+    exit(1);
 }
-elseif(DB_DRIVER === 'pgsql')
-{
-$pdo= new PDO(BASE_DSN_MYSQl, DB_USER_MYSQL, DB_PASS_MYSQL);
-
-}
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$seeder=new Seeder($pdo);
-$seeder->run();

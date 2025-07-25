@@ -1,19 +1,17 @@
 <?php
 
-abstract class AbstractRepository
+use App\Config\Singleton;
+use App\Core\Abstract\IRepository;
+
+abstract class AbstractRepository extends Singleton implements IRepository
 {
     protected PDO $pdo;
+    protected string $table;
 
-    protected function __construct()
+    protected function __construct($pdo)
     {
-
+        $this->pdo = $pdo;
     }
-
-
-    abstract public function selectAll();
-    abstract public function insert();
-    abstract public function update();
-    abstract public function delete();
 
 }
 

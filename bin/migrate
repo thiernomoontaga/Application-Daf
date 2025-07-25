@@ -5,20 +5,31 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 require_once __DIR__ . "/../app/config/env.php";
 
-use Migrations\Migrations\Migration;
-use \PDO;
+use Migration\Migration\Migration;
 
+try {
+    echo "=== Migration de la base de données ===\n\n";
 
+    // Utiliser la classe Database existante pour la connexion
+    echo "Connexion à la base de données...\n";
 
-if(DB_DRIVER === 'mysql'){
+    if (DB_DRIVER === 'postgres') {
+        $pdo = new PDO(DB_DSN_POSTGRES, DB_USER_POSTGRES, DB_PASS_POSTGRES);
+    } elseif (DB_DRIVER === 'mysql') {
+        $pdo = new PDO(DB_DSN_MYSQL, DB_USER_MYSQL, DB_PASS_MYSQL);
+    } else {
+        throw new Exception("Driver de base de données non supporté: " . DB_DRIVER);
+    }
 
-$pdo= new PDO(DB_DSN_POSTGRES, DB_USER_POSTGRES, DB_PASS_POSTGRES);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    echo "✅ Connexion établie\n\n";
+
+    $migration = new Migration($pdo);
+    $migration->run();
+
+    echo "\n=== Migration terminée avec succès! ===\n";
+} catch (Exception $e) {
+    echo "❌ Erreur lors de la migration: " . $e->getMessage() . "\n";
+    exit(1);
 }
-elseif(DB_DRIVER === 'pgsql')
-{
-$pdo= new PDO(BASE_DSN_MYSQl, DB_USER_MYSQL, DB_PASS_MYSQL);
-
-}
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$migration=new Migration($pdo);
-$migration->run();

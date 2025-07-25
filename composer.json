@@ -1,29 +1,34 @@
 {
-    "name": "daff/app",
-    "version": "1.0.0",
-    "autoload": {
-        "psr-4": {
-            "Daff\\App\\": "src/",
-            "Src\\Entity\\":"src/entity/",
-            "Src\\Controller\\":"src/controller/",
-            "Src\\Service\\":"src/service/",
-            "Src\\Repository\\":"src/repository/",
-            "App\\Config\\":"app/config/",
-            "App\\Core\\":"app/core/",
-            "App\\Core\\Abstract\\":"app/core/asbtract/",
-            "App\\Core\\Middlewares\\":"app/core/middlewares",
-            "Migration\\Migration\\":"migrations/",
-            "Seeders\\Seeders\\":"seeders/"
-            
-        }
-    },
-    "authors": [
-        {
-            "name": "Dieng"
-        }
-    ],
-    "require": {
-        "symfony/yaml": "^7.3",
-        "vlucas/phpdotenv": "^5.6"
+  "name": "daff/app",
+  "version": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "Daff\\App\\": "src/",
+      "Src\\Entity\\": "src/entity/",
+      "Src\\Controller\\": "src/controller/",
+      "Src\\Service\\": "src/service/",
+      "Src\\Repository\\": "src/repository/",
+      "App\\Config\\": "app/config/",
+      "Core\\": "app/core/",
+      "App\\Core\\": "app/core/",
+      "App\\Core\\Abstract\\": "app/core/asbtract/",
+      "App\\Core\\Middlewares\\": "app/core/middlewares",
+      "Migration\\Migration\\": "migrations/",
+      "Seeders\\": "seeders/"
     }
+  },
+  "authors": [
+    {
+      "name": "Dieng"
+    }
+  ],
+  "require": {
+    "symfony/yaml": "^7.3",
+    "vlucas/phpdotenv": "^5.6",
+    "cloudinary/cloudinary_php": "^3.1"
+  },
+  "scripts": {
+    "database:migrate": "php bin/migrate",
+    "database:seed": "php bin/seed"
+  }
 }

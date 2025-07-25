@@ -1,0 +1,54 @@
+services:
+  # Core services
+  database:
+    class: App\Core\Database
+    singleton: true
+
+  # Repositories
+  citoyen_repository:
+    class: Src\Repository\CitoyenRepository
+    singleton: true
+
+  logging_repository:
+    class: Src\Repository\LoggingRepository
+    singleton: true # Services
+  citoyen_service:
+    class: Src\Service\CitoyenService
+    singleton: true
+    dependencies:
+      - citoyen_repository
+
+  logging_service:
+    class: Src\Service\LoggingService
+    singleton: true
+    dependencies:
+      - logging_repository
+
+  # Upload services
+  upload_service_cloud:
+    class: Src\Service\UploadServiceCloud
+    singleton: true
+
+  upload_service_local:
+    class: Src\Service\UploadServiceLocal
+    singleton: true
+
+  # Controllers
+  home_controller:
+    class: Src\Controller\HomeController
+    singleton: false
+
+  citoyen_controller:
+    class: Src\Controller\CitoyenController
+    singleton: false
+    dependencies:
+      - citoyen_service
+      - logging_service
+
+# Interface bindings
+interfaces:
+  Src\Repository\ICitoyenRepository: citoyen_repository
+  Src\Repository\ILoggingRepository: logging_repository
+  Src\Service\ICitoyenService: citoyen_service
+  Src\Service\ILoggingService: logging_service
+  Src\Service\IUploadService: upload_service_cloud # Utiliser Cloudinary par défaut

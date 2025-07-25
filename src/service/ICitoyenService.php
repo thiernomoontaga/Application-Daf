@@ -3,8 +3,9 @@ namespace Src\Service;
 
 use Src\Entity\Citoyen;
 
-interface IcitoyenService
+interface ICitoyenService
 {
-    public function rechercherCitoyen(string $cni): ?Citoyen;
-    public function ajouterCitoyen(array $data): bool;
+    public function getCitoyenByCni(string $cni): ?Citoyen;
+    public function getAllCitoyens(array $filters): array;
+    // public function addCitoyen(array $data): bool;
 }
